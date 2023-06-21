@@ -1,0 +1,7 @@
+<div *ngIf="weatherInfo">
+  <p class="">Temperature: {{weatherInfo.main.temp}} °C</p>
+  <p class="">Feels like: {{weatherInfo.main.feels_like}} °C</p>
+  <p class="">Humidity: {{weatherInfo.main.humidity}}%</p>
+  <p class="">Wind: {{weatherInfo.wind.speed}} m/s</p>
+  <p class="">Description: {{weatherInfo.weather[0].description}}</p>
+</div>

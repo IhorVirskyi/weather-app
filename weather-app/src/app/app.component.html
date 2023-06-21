@@ -1,0 +1,30 @@
+<div class="container">
+
+  <mat-card class="card">
+    <mat-card-header class="header">
+      <mat-card-title>
+        <mat-form-field>
+          <mat-label>Choose city</mat-label>
+          <mat-select [(ngModel)]="selectedCity" (selectionChange)="onCityChange()">
+            <mat-option *ngFor="let city of cities" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+
+    <!--      <img mat-card-image src="{{iconWeather}}" alt="actual weather icon" class="weather-icon">-->
+    <mat-card-content *ngIf="data$ | loadingIndicator | async as weatherInfo">
+      <div>
+        <app-weather-view *ngIf="!weatherInfo.loading && !weatherInfo.error" [weatherInfo]="weatherInfo.value"></app-weather-view>
+        <ng-template [ngIf]="weatherInfo.error">
+          An error has occurred loading data :(
+        </ng-template>
+        <ng-template [ngIf]="weatherInfo.loading">Loading...</ng-template>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
